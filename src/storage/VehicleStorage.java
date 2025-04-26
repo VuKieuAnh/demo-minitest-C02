@@ -1,0 +1,49 @@
+package storage;
+
+import model.Car;
+import model.Motorbike;
+import model.Vehicle;
+
+import java.io.*;
+import java.util.ArrayList;
+
+public class VehicleStorage {
+//    ghi file
+    public static ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
+
+    public static ArrayList<Vehicle> getVehicles() {
+        File file = new File("vehicles.txt");
+        try {
+            FileInputStream fis = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            vehicles = (ArrayList<Vehicle>) ois.readObject();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return vehicles;
+    }
+
+    public static void writeFileVehicles(ArrayList<Vehicle> vehicles) {
+        VehicleStorage.vehicles = vehicles;
+        File file = new File("vehicles.txt");
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(vehicles);
+            oos.close();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void main(String[] args) {
+        ArrayList<Vehicle> vehicles1 = getVehicles();
+        System.out.println(vehicles1);
+    }
+}

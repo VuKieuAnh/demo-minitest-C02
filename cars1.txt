@@ -1,1 +1,0 @@
-Car{numberOfSeats=2}

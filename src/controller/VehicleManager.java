@@ -1,16 +1,18 @@
 package controller;
 
 import model.Vehicle;
+import storage.VehicleStorage;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
 public class VehicleManager {
-    static ArrayList<Vehicle> vehicles = new ArrayList<>();
+    static ArrayList<Vehicle> vehicles = VehicleStorage.getVehicles();
 
     public static void addVehicle(Vehicle v){
         vehicles.add(v);
+        VehicleStorage.writeFileVehicles(vehicles);
     }
 
 
