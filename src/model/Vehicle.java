@@ -1,6 +1,8 @@
 package model;
 
-public abstract class Vehicle implements Comparable<Vehicle>, Taxable {
+import java.io.Serializable;
+
+public abstract class Vehicle implements Comparable<Vehicle>, Taxable, Serializable {
     private String id;
     private String brand;
     private int year;
