@@ -1,6 +1,8 @@
 package controller;
 
 import model.Vehicle;
+import storage.CSVReadWriteFile;
+import storage.IReadWriteFile;
 import storage.VehicleStorage;
 
 import java.util.ArrayList;
@@ -8,11 +10,12 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class VehicleManager {
-    static ArrayList<Vehicle> vehicles = VehicleStorage.getVehicles();
+    static IReadWriteFile readWriteFile = new CSVReadWriteFile();
+    static ArrayList<Vehicle> vehicles = readWriteFile.getVehicles();
 
     public static void addVehicle(Vehicle v){
         vehicles.add(v);
-        VehicleStorage.writeFileVehicles(vehicles);
+        readWriteFile.writeFileVehicles(vehicles);
     }
 
 

@@ -7,11 +7,11 @@ import model.Vehicle;
 import java.io.*;
 import java.util.ArrayList;
 
-public class VehicleStorage {
+public class VehicleStorage implements IReadWriteFile {
 //    ghi file
     public static ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
 
-    public static ArrayList<Vehicle> getVehicles() {
+    public ArrayList<Vehicle> getVehicles() {
         File file = new File("vehicles.txt");
         try {
             FileInputStream fis = new FileInputStream(file);
@@ -27,7 +27,7 @@ public class VehicleStorage {
         return vehicles;
     }
 
-    public static void writeFileVehicles(ArrayList<Vehicle> vehicles) {
+    public void writeFileVehicles(ArrayList<Vehicle> vehicles) {
         VehicleStorage.vehicles = vehicles;
         File file = new File("vehicles.txt");
         try {
@@ -42,8 +42,5 @@ public class VehicleStorage {
         }
     }
 
-    public static void main(String[] args) {
-        ArrayList<Vehicle> vehicles1 = getVehicles();
-        System.out.println(vehicles1);
-    }
+
 }
