@@ -1,13 +1,12 @@
-package storage;
+package storage.verhicle;
 
-import model.Car;
-import model.Motorbike;
 import model.Vehicle;
+import storage.IReadWriteFile;
 
 import java.io.*;
 import java.util.ArrayList;
 
-public class VehicleStorage implements IReadWriteFile {
+public class VehicleStorage implements IReadWriteFile<Vehicle> {
 //    ghi file
     public static ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
 
